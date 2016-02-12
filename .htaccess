@@ -1,0 +1,11 @@
+Options +FollowSymLinks -MultiViews
+RewriteEngine On
+# RewriteBase equivalent - Development
+#RewriteCond %{HTTP_HOST} ^localhost$
+#RewriteRule . - [E=REWRITEBASE:/Applications/MAMP/htdocs]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !\.php$
+RewriteRule ^(.+?)/*?$ $1.php [L,QSA]
+RewriteCond %{HTTP_HOST} !^www.andywelchphotography.co.uk$ [NC]
+RewriteRule ^(.*)$ http://www.andywelchphotography.co.uk/$1 [L,R=301]
